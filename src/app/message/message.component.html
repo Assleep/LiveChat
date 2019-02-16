@@ -1,0 +1,16 @@
+<div id="chat-area" class="container" style="z-index: -1;">
+	<div class="row">
+		<div class="col">
+			<form action="" style="width: 100%" (ngSubmit)="send()" #form="ngForm">
+				<div class="row">
+					<div class="col-10">
+						<input id="m" name="title" [(ngModel)]="newTitle" placeholder="Type here..." autocomplete="off" required>
+					</div>
+					<div class="col-2">
+						<button [disabled]="form.form.invalid">Send</button>
+					</div>
+				</div>
+    		</form>
+		</div>
+	</div>
+</div>

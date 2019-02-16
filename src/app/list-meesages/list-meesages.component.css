@@ -1,0 +1,40 @@
+*{
+	font-size: 17pt;
+}
+
+
+ul{
+	margin-top: 2em;
+	border: 1px solid;
+	border-color: rgb(160,160,160);
+	height: 30rem;
+	overflow-y: scroll;
+
+}
+
+ul::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.color{
+	color: #ffffff;
+	padding: 0.5em;
+	background-color: #FF8E00; 
+	border-radius: 20px 10px 5px 0;
+}
+
+.position{
+	padding: 1em;
+	text-align: left;
+}
+
+.color2{
+	color: #ffffff;
+	padding: 0.5em;
+	background-color: #00FFFF; 
+	border-radius: 10px 20px 0 5px;
+}
+.position2{
+	padding: 1em;
+	text-align: right;
+}
