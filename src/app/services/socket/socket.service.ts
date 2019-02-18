@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MessageComponent } from '../../message/message.component';
+import { Cmessage } from '../../shared/Cmessage';
 import * as io from "socket.io-client";
 
 @Injectable({
@@ -10,13 +12,9 @@ export class SocketService {
 	private host: string="http://192.168.0.106:8080";
 	private socket: any; 
 
-  constructor() {
+	sendMessage(message){
 	this.socket = io(this.host);
-	this.socket.on("connect" , () => {
-		console.log('Connected');
-	});
-	this.socket.on('message', (msg) =>{
-		// data from input
-	});
-  }
+    this.socket.emit('message', message);    
+  	}
+  constructor() { }
 }

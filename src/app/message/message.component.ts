@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cmessage } from '../shared/Cmessage';
 import { dbm } from '../shared/fdata';
+import { SocketService } from '../services/socket/socket.service';
 import { FormsModule } from '@angular/forms';
 
 
@@ -17,12 +18,13 @@ export class MessageComponent implements OnInit {
 
   send() {
   	let message: Cmessage = new Cmessage(this.newTitle);
+    this.socketService.sendMessage(this.newTitle);
   	this.dbm.push(message);
   	this.newTitle = '';
 
   }
 
-  constructor() { }
+  constructor(private socketService: SocketService) { }
 
   ngOnInit() {
   }
