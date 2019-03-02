@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cmessage } from '../shared/Cmessage';
 import { dbm } from '../shared/fdata';
 import { SocketService } from '../services/socket/socket.service';
@@ -14,9 +14,10 @@ import { FormsModule } from '@angular/forms';
 export class MessageComponent implements OnInit {
 
   newTitle: string = '';
+  name: string;
 
   send() {
-  	let message: Cmessage = new Cmessage(this.newTitle, false);
+  	let message: Cmessage = new Cmessage(this.newTitle, false, this.socketService['name']);
     this.socketService.sendMessage(message);
   	this.newTitle = '';
 

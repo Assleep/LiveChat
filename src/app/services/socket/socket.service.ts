@@ -11,22 +11,27 @@ export class SocketService {
 
 	private host: string="http://192.168.0.106:8080";
 	private socket: any = io(this.host);
+	name: string;
 
 	sendMessage(message){
     	this.socket.emit('callDriver', message);    
   	}
 
-  getMessages() {
-    let observable = new Observable(observer => {
-      this.socket.on('sendToDriver', (message) => {
-        observer.next(message);    
-      });
-      	return () => {
-       	 this.socket.disconnect();
-      	};  
-      })     
-    	return observable;
-  	}  
+  	setName(){
+  		this.name = (this.socket.id).toString().slice(0,5);
+  	}
+
+	  getMessages() {
+	    let observable = new Observable(observer => {
+	      this.socket.on('sendToDriver', (message) => {
+	        observer.next(message);    
+	      });
+	      	return () => {
+	       	 this.socket.disconnect();
+	      	};  
+	      })     
+	    	return observable;
+	  	}  
 
   constructor() { }
 }

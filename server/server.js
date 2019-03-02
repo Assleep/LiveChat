@@ -8,14 +8,17 @@ io.on("connection", function(socket){
 	console.log("a user connected: " + (socket.id).toString().slice(0,5));
 
 	socket.on('callDriver', (message) => {
-		if(!message['person']){	
+
+		io.emit('sendToDriver', message);
+		
+		/* if(!message['person']){
 			io.emit('sendToDriver', message);
 			console.log("message from me: " + message['title']);
 
 		}else {
 			io.emit('sendToDriver', message);
 			console.log("message from your friend" + message['title']);
-		}
+		} */
 	});
 	socket.on('disconnect', () => {
 		console.log('a user disconnected: ' + (socket.id).toString().slice(0,5));

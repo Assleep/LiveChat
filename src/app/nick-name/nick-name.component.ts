@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as io from 'socket.io-client';
+import { SocketService } from '../services/socket/socket.service';
+import { Cmessage } from '../shared/Cmessage';
 
 @Component({
   selector: 'app-nick-name',
@@ -8,11 +10,12 @@ import * as io from 'socket.io-client';
 })
 export class NickNameComponent implements OnInit {
 
-  constructor() { }
+  constructor(private socketService: SocketService) { }
 	
-  nickName: string = "321@khf";
+  name: string;
 
   ngOnInit() {
+  	this.name = this.socketService['name'];
   }
 
 }
