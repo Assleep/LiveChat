@@ -13,13 +13,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class MessageComponent implements OnInit {
 
-  dbm: Cmessage[] = dbm;
   newTitle: string = '';
 
   send() {
-  	let message: Cmessage = new Cmessage(this.newTitle);
-    this.socketService.sendMessage(this.newTitle);
-  	this.dbm.push(message);
+  	let message: Cmessage = new Cmessage(this.newTitle, false);
+    this.socketService.sendMessage(message);
   	this.newTitle = '';
 
   }

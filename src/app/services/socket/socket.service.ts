@@ -10,11 +10,23 @@ import * as io from "socket.io-client";
 export class SocketService {
 
 	private host: string="http://192.168.0.106:8080";
-	private socket: any; 
+	private socket: any = io(this.host);
 
 	sendMessage(message){
-	this.socket = io(this.host);
-    this.socket.emit('message', message);    
+    	this.socket.emit('callDriver', message);    
   	}
+
+  getMessages() {
+    let observable = new Observable(observer => {
+      this.socket.on('sendToDriver', (message) => {
+        observer.next(message);    
+      });
+      	return () => {
+       	 this.socket.disconnect();
+      	};  
+      })     
+    	return observable;
+  	}  
+
   constructor() { }
 }

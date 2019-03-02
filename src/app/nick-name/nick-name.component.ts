@@ -8,7 +8,6 @@ import * as io from 'socket.io-client';
 })
 export class NickNameComponent implements OnInit {
 
-  socket = io('http://192.168.0.106:8080');
   constructor() { }
 	
   nickName: string = "321@khf";
