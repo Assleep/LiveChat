@@ -1,6 +1,10 @@
 export class Cmessage{
 
+	nick: any;
+
 	constructor( public title: string, 
-						person: boolean = false,
-						name: any ){}
+						person: boolean = true,
+						name: any ){
+		this.nick = name;
+	}
 }

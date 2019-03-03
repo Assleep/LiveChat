@@ -10,6 +10,7 @@ io.on("connection", function(socket){
 	socket.on('callDriver', (message) => {
 
 		io.emit('sendToDriver', message);
+		console.log(message['name']);
 		
 		/* if(!message['person']){
 			io.emit('sendToDriver', message);
