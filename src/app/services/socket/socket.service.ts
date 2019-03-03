@@ -11,15 +11,21 @@ export class SocketService {
 
 	private host: string="http://192.168.0.106:8080";
 	private socket: any = io(this.host);
-	name: string;
 
 	sendMessage(message){
     	this.socket.emit('callDriver', message);    
   	}
-
-  	setName(){
-  		this.name = (this.socket.id).toString().slice(0,5);
-  	}
+  	getName(){
+		let observable = new Observable<string>(observer => {
+	      this.socket.on('connect', () => {
+	        observer.next(this.socket.id.toString().slice(0, 5));    
+	      });
+	      	return () => {
+	       	 this.socket.disconnect();
+	      	};  
+	      })     
+	    	return observable;
+	  	}     
 
 	  getMessages() {
 	    let observable = new Observable(observer => {

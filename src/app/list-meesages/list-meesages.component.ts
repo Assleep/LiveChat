@@ -11,16 +11,22 @@ export class ListMeesagesComponent implements OnInit {
 
 	dbm: Cmessage[] = [];
 	connection: any;
-	name: string;
+	name: any;
+	connection1: any;
 
 	constructor(private socketService: SocketService) { 
 }
 
   ngOnInit() {
+  	this.connection1 = this.socketService.getName().subscribe(observer => {
+  		this.name = observer;
+  	});
   	this.connection = this.socketService.getMessages().subscribe(message => {
 	  	let item: Cmessage = new Cmessage(message['title'], message['person'], message['name']);
-	  	if(message['name'] != this.socketService['name']){
-	  		item['person'] = !!item['person'];
+	  	if(message['name'] != this.name ){
+	  		console.log(item['name']);
+	  		item['person'] = !item['person'];
+	  		console.log(item['person']);
 			this.dbm.push(item);
 	  	}else{
 			this.dbm.push(item);

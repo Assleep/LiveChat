@@ -12,10 +12,12 @@ export class NickNameComponent implements OnInit {
 
   constructor(private socketService: SocketService) { }
 	
-  name: string;
+  name: any;
+  connection: any;
 
   ngOnInit() {
-  	this.name = this.socketService['name'];
+  	this.connection = this.socketService.getName().subscribe(observer => {
+  		this.name = observer;
+  	});
   }
-
 }

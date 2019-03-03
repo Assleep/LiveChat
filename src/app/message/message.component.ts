@@ -14,10 +14,12 @@ import { FormsModule } from '@angular/forms';
 export class MessageComponent implements OnInit {
 
   newTitle: string = '';
-  name: string;
+  name: any = this.socketService.getName().subscribe(observer => {
+      this.name = observer;
+  });
 
   send() {
-  	let message: Cmessage = new Cmessage(this.newTitle, false, this.socketService['name']);
+  	let message: Cmessage = new Cmessage(this.newTitle, false, this.name);
     this.socketService.sendMessage(message);
   	this.newTitle = '';
 
@@ -27,5 +29,5 @@ export class MessageComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }
