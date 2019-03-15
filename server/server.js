@@ -10,22 +10,14 @@ io.on("connection", function(socket){
 	socket.on('callDriver', (message) => {
 
 		io.emit('sendToDriver', message);
-		console.log(message['name']);
-		
-		/* if(!message['person']){
-			io.emit('sendToDriver', message);
-			console.log("message from me: " + message['title']);
-
-		}else {
-			io.emit('sendToDriver', message);
-			console.log("message from your friend" + message['title']);
-		} */
 	});
 	socket.on('disconnect', () => {
+
 		console.log('a user disconnected: ' + (socket.id).toString().slice(0,5));
 	});
 });
 
 app.listen(PORT, () => {
+	
 	console.log("Connected to port:" + PORT);
 });

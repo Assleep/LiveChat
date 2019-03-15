@@ -12,6 +12,11 @@ ul{
 
 }
 
+strong {
+	font-size: 10pt;
+	font-weight: lighter;
+}
+
 ul::-webkit-scrollbar {
     width: 0.5em;
 }
@@ -37,4 +42,10 @@ ul::-webkit-scrollbar {
 .position2{
 	padding: 1em;
 	text-align: right;
+}
+
+#n {
+	margin-bottom: 0.5em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 }

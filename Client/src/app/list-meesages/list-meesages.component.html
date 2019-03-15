@@ -1,8 +1,23 @@
 <div id="chat-area" class="container">
 	<div class="row">
 		<div class="col">
-			<ul id="messages" class="list-unstyled" >
-				<li *ngFor = "let message of dbm" [ngClass]="{'position': message.person, 'position2': !message.person}"><span [ngClass]="{'color': message.person, 'color2': !message.person}">{{ message.title }}</span></li>
+			<ul id="messages" class="list-unstyled">
+				<li *ngFor = "let message of dbm" [ngClass]="{'position': message.person, 'position2': !message.person}">
+					<div class="row">
+						<div class="col">
+							<div class="row" id="n">
+								<div class="col">
+									<strong>{{message.nick}}</strong>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<span [ngClass]="{'color': message.person, 'color2': !message.person}">{{ message.title }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>
